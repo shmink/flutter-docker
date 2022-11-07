@@ -13,11 +13,14 @@ jobs:
   build-and-push:
     runs-on: ubuntu
     steps:
-      - name: build image
-      - run: docker build -t shmink/flutter .
-    
-      - name: login
-      - run: docker login -u ${USERNAME} -p ${PASSWORD}
+      - name: Check out repository code
+        uses: actions/checkout@v3
 
+      - name: build image
+        run: docker build -t shmink/flutter .
+
+      - name: login
+        run: docker login -u ${USERNAME} -p ${PASSWORD}
+        
       - name: push image
-      - run: docker push shmink/flutter
+        run: docker push shmink/flutter
