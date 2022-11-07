@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+env:
+  USERNAME: ${{ secrets.USERNAME }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+
 jobs:
   build-and-push:
     runs-on: ubuntu
@@ -13,7 +17,7 @@ jobs:
       - run: docker build -t shmink/flutter .
     
       - name: login
-      - run: docker login -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
+      - run: docker login -u ${USERNAME} -p ${PASSWORD}
 
       - name: push image
       - run: docker push shmink/flutter
