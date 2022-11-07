@@ -12,7 +12,8 @@ jobs:
       - name: build image
       - run: docker build -t shmink/flutter .
     
-      - name: push image to docker hub
-      - run: |
-        docker login -u shmink -p ${{ secrets.PASSWORD }}
-        docker push shmink/flutter
+      - name: login
+      - run: docker login -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
+
+      - name: push image
+      - run: docker push shmink/flutter
