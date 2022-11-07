@@ -1,0 +1,20 @@
+name: Build and push new image
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    steps:
+      - name: build image
+      - run: |
+        docker build -t shmink/flutter .
+    
+  deploy:
+    steps: 
+      - name: push image to docker hub
+      - run: |
+        docker login -u shmink -p ${{ secret.PASSWORD }}
+        docker push shmink/flutter
