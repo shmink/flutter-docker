@@ -8,12 +8,11 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu
-      steps:
-        - name: build image
-        - run: |
-          docker build -t shmink/flutter .
-      
-        - name: push image to docker hub
-        - run: |
-          docker login -u shmink -p ${{ secrets.PASSWORD }}
-          docker push shmink/flutter
+    steps:
+      - name: build image
+      - run: docker build -t shmink/flutter .
+    
+      - name: push image to docker hub
+      - run: |
+        docker login -u shmink -p ${{ secrets.PASSWORD }}
+        docker push shmink/flutter
