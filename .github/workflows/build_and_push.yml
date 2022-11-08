@@ -11,7 +11,7 @@ env:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu
+    runs-on: self-hosted
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -21,6 +21,6 @@ jobs:
 
       - name: login
         run: docker login -u ${USERNAME} -p ${PASSWORD}
-        
+
       - name: push image
         run: docker push shmink/flutter
