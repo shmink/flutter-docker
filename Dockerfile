@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 debian:stable-slim
+FROM debian:stable-slim
 
 RUN apt update
 RUN apt install -y \
