@@ -26,6 +26,6 @@ jobs:
         run: docker login -u ${USERNAME} -p ${PASSWORD}
 
       - name: push images
-        run: 
-          - docker push shmink/flutter:arm64
-          - docker push shmink/flutter:amd64
+        run: |
+          docker push shmink/flutter:arm64
+          docker push shmink/flutter:amd64
