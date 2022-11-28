@@ -16,11 +16,16 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: build image
-        run: docker build -t shmink/flutter .
+      - name: build arm image
+        run: docker build -t shmink/flutter:arm64 .
+
+      - name: build amd image
+        run: docker build --platform linux/amd64 -t shmink/flutter:amd64 .
 
       - name: login
         run: docker login -u ${USERNAME} -p ${PASSWORD}
 
-      - name: push image
-        run: docker push shmink/flutter
+      - name: push images
+        run: 
+          - docker push shmink/flutter:arm64
+          - docker push shmink/flutter:amd64
